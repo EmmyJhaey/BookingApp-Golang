@@ -1,8 +1,8 @@
-//package declaration
+// package declaration
 package main
 
 //importing neccessary packages
-import "fmt";
+import "fmt"
 
 //main function
 func main(){
@@ -16,6 +16,7 @@ func main(){
 	var email string;
 	var ticketBook int;
 	var remainingTickets int;
+	var users = [] string {};
 
 	//Print types of each variables
 	/*
@@ -47,8 +48,17 @@ func main(){
 	//calculating remaining tickets
 	remainingTickets = conferenceTickets - ticketBook;
 
+
+	//populating the user array 
+	// users[2] = firstName + " " + lastName;
+	users = append(users, firstName + " " + lastName)
+
 	//booking confirmation message
 	fmt.Printf("Thank you %v %v, for booking %v tickets. A confirmation message has been sent to %v\n", firstName, lastName, ticketBook, email)
 	fmt.Printf("we still have %v tickets available for %v\n", remainingTickets, conferenceName)
 
+	//Printing the names of the users who have booked tickets
+	fmt.Printf("The names of the users who have booked tickets are: %v\n", users)
+	//Print Slice length
+	fmt.Printf("The length of the users slice is: %v\n", len(users))
 }
