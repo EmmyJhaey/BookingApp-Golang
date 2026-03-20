@@ -2,32 +2,31 @@
 package main
 
 //importing neccessary packages
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 //main function
 func main(){
-	//constant declaration
-	const conferenceTickets int = 50;
+	//Constant Declaration
 	const conferenceName string = "Go Conference";
 
-    //variable declaration
+    //Variable declaration
+	conferenceTickets := 50;
 	var firstName string;
 	var lastName string;
 	var email string;
 	var ticketBook int;
-	// var remainingTickets int;
-	var users = [] string {};
+	var remainingTickets int;
+	bookings := [] string {};
 
-	//Print types of each variables
-	/*
-		fmt.Println("The types of each variables are: ")
-		fmt.Printf("FirstName: %T, LastName: %T, Email: %T, TicketBook: %T, RemainingTickets: %T\n", firstName, lastName, email, ticketBook, remainingTickets)
-	*/
 
 
 	for{
 		//Welcome message
 		fmt.Printf("Welcome to %v\n", conferenceName)
+		fmt.Printf("==================================================================\n")
 		fmt.Printf("We have total of %v tickets, and we are here at your service...\n", conferenceTickets)
 	
 		//taking user input
@@ -48,27 +47,27 @@ func main(){
 		fmt.Scan(&ticketBook)
 	
 		//calculating remaining tickets
-		// remainingTickets = conferenceTickets - ticketBook;
-	
-		//populating the user array 
-		// users[2] = firstName + " " + lastName;
-		users = append(users, firstName + " " + lastName)//appending the user input to the users slice 
+		remainingTickets = conferenceTickets - ticketBook;
 
-		//Printing the names of the users who have booked tickets
-		fmt.Printf("These are the name of the users who have booked tickets %v\n", users)
-
-		
+		//Final Output
+		fmt.Printf("Thank you, %v for booking %v ticket. A mail will be sent to %v\n", firstName, ticketBook, email)
+		fmt.Printf("We have %v more ticket remaining for the %v\n", remainingTickets, conferenceName)
 
 
+		//list of bookings 
+		bookings = append(bookings, firstName + " " + lastName);
 
-	
-		//booking confirmation message
-		// fmt.Printf("Thank you %v %v, for booking %v tickets. A confirmation message has been sent to %v\n", firstName, lastName, ticketBook, email)
-		// fmt.Printf("we still have %v tickets available for %v\n", remainingTickets, conferenceName)
-	
-		//Printing the names of the users who have booked tickets
-		// fmt.Printf("The names of the users who have booked tickets are: %v\n", users)
-		//Print Slice length
-		// fmt.Printf("The length of the users slice is: %v\n", len(users))
+		firstNames := [] string {};
+
+		for _, booking := range bookings{
+			names := strings.Fields(booking)
+			//print out users first name only
+			firstNames = append(firstNames, names[0])
+		}
+
+		fmt.Printf("The first name of bookings: %v\n", firstNames)
+
+		conferenceTickets -= ticketBook;
+		fmt.Printf("==================================================================\n")
 	}
 }
