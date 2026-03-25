@@ -41,22 +41,21 @@ func main(){
 			userData["email"] = email;
 			userData["userTicket"] = strconv.FormatInt(int64(userTicket), 10);
 
-
-			//test our map - by print user info 
-			fmt.Printf("User Info %v: \n=================\n", userData)
+			//test our map - by print user info - map validation
+			// fmt.Printf("User Info %v: \n=================\n", userData)
 			
 			fmt.Printf("Thank you, %v for booking %v ticket. A mail will be sent to %v\n", userData["firstName"], userData["userTicket"], userData["email"])
-			fmt.Printf("%v\n", lines)
-			fmt.Printf("We have %v more ticket remaining for the %v\n", remainingTickets, conferenceName)
-
-			//append user data to booking slice
+				//append user data to booking slice
 			bookings = append(bookings, userData)
 
 			//print users first name only 
-			
 			firstNames := getFirstNames()
 			fmt.Printf("The first name of bookings: %v\n", firstNames)
-			
+
+			fmt.Printf("%v\n", lines)//program end line 
+
+			fmt.Printf("We have %v more ticket remaining for the %v\n", remainingTickets, conferenceName)
+
 			//end the application if this condition is true
 			if remainingTickets == 0 {
 			fmt.Printf("You have reach the end of our bookings\n") 
